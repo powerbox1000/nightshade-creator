@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>Nightshade BETA - embbed standalone</title>
+<style>
+.containbox{
+display:table-cell;
+}
+.box{
+  width: 500px;
+  height: 300px;
+  padding: 10px;
+  border: 1px solid;
+  margin: 0;
+  display: block;
+}
+textarea,iframe{
+width: 500px;
+height: 300px;
+}
+</style>
+</head>
+<body>
+<center>
+<div id="toolbar">
+<button id="exporthtml" onclick="exportCodeAsHTML()">Export HTML</button>
+<button id="exportsrc" onclick="exportCodeAsText()">Export source code</button>
+<button disabled="true" onclick="window.location.href = 'blocks/index.html'">Enter Block mode</button>
+<button disabled="disabled">Export as block mode</button>
+</div>
+<div class="containbox">
+<div class="box" id="1"><textarea id="html" placeholder="HTML goes here..."></textarea></div>
+<div class="box" id="2"><textarea id="js" placeholder="JS goes here..."></textarea></div>
+</div>
+<div class="containbox">
+<div class="box" id="3"><textarea id="css" placeholder="CSS goes here..."></textarea></div>
+<div class="box" id="4"><iframe id="resultPrev" frameborder="0"></iframe></div>
+</div>
+</center>
+<script>
+function exportCodeAsHTML(){
+var htmlEl = document.getElementById('html');
+var jsEl = document.getElementById('css');
+var cssEl = document.getElementById('js');
+var code = generate(htmlEl.value,cssEl.value,jsEl.value);
+download('export.html',code,'html');
+}
+function exportCodeAsText(){
+var htmlEl = document.getElementById('html');
+var jsEl = document.getElementById('css');
+var cssEl = document.getElementById('js');
+var code = generate(htmlEl.value,cssEl.value,jsEl.value);
+download('export.txt',code,'plain');
+}
+//This generates the HTML, JS, and CSS output
+function generate(html,css,js){
+var htmlJs = html.replace('</html>','<script>'+js+'<\/script><\/html>');
+var htmlJsCss = htmlJs.replace('<body>','<body><style>'+css+'</style>');
+//var out = htmlJsCss.replace(/(\r\n|\n|\r)/gm,"");
+//return out;
+return htmlJsCss
+}
+function download(filename,text,type) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/'+type+';charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
+
+//realtime generator
+document.onkeyup=function(){
+var htmlEl = document.getElementById('html');
+var jsEl = document.getElementById('js');
+var cssEl = document.getElementById('css');
+var resultEl = document.getElementById('resultPrev');
+var code = generate(htmlEl.value,cssEl.value,jsEl.value);
+resultEl.setAttribute('src','data:text/html;charset=utf-8,' + encodeURIComponent(code));
+}
+</script>
+</body>
