@@ -1,0 +1,1 @@
+function checkAdmin(){if(document.getElementById('continue').value==passwd){localStorage.accesskey=acckey;window.location.href="beta.html"}}

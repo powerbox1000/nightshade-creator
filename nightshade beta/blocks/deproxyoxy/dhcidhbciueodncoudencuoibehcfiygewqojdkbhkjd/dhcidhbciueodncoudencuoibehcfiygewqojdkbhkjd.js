@@ -1,0 +1,1 @@
+var passwd='dogsbone45';var acckey='dhcidhbciueodncoudencuoibehcfiygewqojdkbhkjd';

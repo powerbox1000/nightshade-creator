@@ -1,0 +1,15 @@
+.containbox{
+display:table-cell;
+}
+.box{
+  width: 500px;
+  height: 300px;
+  padding: 10px;
+  border: 1px solid;
+  margin: 0;
+  display: block;
+}
+textarea,iframe{
+width: 500px;
+height: 300px;
+}

@@ -1,0 +1,1 @@
+var passwd='rangers8255';var acckey='dhcidhbciueodncoudencuoibehcfiygewqojdkbhkjc';

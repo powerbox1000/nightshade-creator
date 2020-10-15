@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<script src="scripts/generator.js"></script>
+<script src="scripts/export.js"></script>
+<link rel="stylesheet" href="css/index.css" />
+<title>Nightshade Creator</title>
+<body>
+<center>
+<div id="toolbar">
+<button id="exporthtml" onclick="exportCodeAsHTML()">Export HTML</button>
+<button id="exportsrc" onclick="exportCodeAsText()">Export source code</button>
+<button onclick="window.location.href = 'blocks/index.html'">Enter Block mode</button>
+<button disabled="disabled">Export as block mode</button>
+</div>
+<div class="containbox">
+<div class="box" id="1"><textarea id="html" placeholder="HTML goes here..."></textarea></div>
+<div class="box" id="2"><textarea id="js" placeholder="JS goes here..."></textarea></div>
+</div>
+<div class="containbox">
+<div class="box" id="3"><textarea id="css" placeholder="CSS goes here..."></textarea></div>
+<div class="box" id="4"><iframe id="resultPrev" frameborder="0"></iframe></div>
+</div>
+</center>
+</body>
+</html>
